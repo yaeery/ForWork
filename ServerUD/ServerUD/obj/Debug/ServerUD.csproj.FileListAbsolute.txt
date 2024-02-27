@@ -1,0 +1,7 @@
+C:\Users\kondr\source\repos\ServerUD\ServerUD\obj\Debug\ServerUD.csproj.AssemblyReference.cache
+C:\Users\kondr\source\repos\ServerUD\ServerUD\obj\Debug\ServerUD.csproj.CoreCompileInputs.cache
+C:\Users\kondr\source\repos\ServerUD\ServerUD\bin\Debug\ServerUD.exe.config
+C:\Users\kondr\source\repos\ServerUD\ServerUD\bin\Debug\ServerUD.exe
+C:\Users\kondr\source\repos\ServerUD\ServerUD\bin\Debug\ServerUD.pdb
+C:\Users\kondr\source\repos\ServerUD\ServerUD\obj\Debug\ServerUD.exe
+C:\Users\kondr\source\repos\ServerUD\ServerUD\obj\Debug\ServerUD.pdb

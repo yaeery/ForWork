@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UD_Kurs_2.Director">
+    <ContentPage.Content>
+        <Grid x:Name="Main_Grid" RowSpacing="0" ColumnSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.9*"/>
+                <RowDefinition Height="0.1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <ScrollView x:Name="Scroll_View" Grid.Column="0" Grid.Row="0" BackgroundColor="White" Orientation="Horizontal" IsEnabled="False" >
+                <StackLayout Orientation="Horizontal">
+                    
+                    <StackLayout x:Name="First_page"  BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
+                        <StackLayout>
+                            <BoxView HorizontalOptions="StartAndExpand" BackgroundColor="Purple" x:Name="Minus_Ugli_Na_First_Page"></BoxView>
+                            <Frame BackgroundColor="Purple" CornerRadius="40" x:Name="Box_View_On_First_Page" Margin="0,-40,0,0">
+                                <StackLayout>
+                                    <Grid x:Name="Cliets_And_Strelka" IsVisible="false">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.2*"/>
+                                            <ColumnDefinition Width="0.6*" />
+                                            <ColumnDefinition Width="0.2*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button x:Name="Strelka_Client" Grid.Row="0" Grid.Column="0"  Clicked="Strelka_Client_Clicked" FontSize="35" BackgroundColor="Purple" TextColor="White"></Button>
+                                        <Label  x:Name="Name_Client_In_Grid" Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand"  HorizontalTextAlignment="Center" FontSize="30" TextColor="White"></Label>
+                                    </Grid>
+                                    <Label  x:Name="Name_Client" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontSize="35"  TextColor="White">Клиенты</Label>
+                                    <StackLayout Orientation="Horizontal" x:Name="Sl_Knopok_Cl">
+                                        <ImageButton Source="poisk.png" HorizontalOptions="EndAndExpand" x:Name="Poisk_Cl_Bt"  BackgroundColor="Purple" Clicked="Poisk_Cl_Bt_Clicked"></ImageButton>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                            <ScrollView x:Name="Client_sckroll">
+                                <StackLayout x:Name="StackLayout_In_Scroll">
+                                </StackLayout>
+                            </ScrollView>
+                            
+                        </StackLayout>
+                        <Button x:Name="Del_Client" Text="Удалить клиента" BackgroundColor="Purple" CornerRadius="40" IsVisible="false"  TextColor="White" VerticalOptions="EndAndExpand" Clicked="Del_Client_Clicked"></Button>
+                    </StackLayout>
+                    
+                    
+                    <StackLayout x:Name="Second_page" BackgroundColor="White">
+                        <StackLayout>
+                            <BoxView HorizontalOptions="StartAndExpand" BackgroundColor="Purple" x:Name="Minus_Ugli_Na_Second_Page"></BoxView>
+                            <Frame BackgroundColor="Purple" CornerRadius="40" x:Name="Box_View_On_Second_Page" Margin="0,-40,0,0">
+                                <StackLayout>
+                                    <Grid x:Name="Sotr_And_Strelka" IsVisible="false">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.2*"/>
+                                            <ColumnDefinition Width="0.6*" />
+                                            <ColumnDefinition Width="0.2*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button x:Name="Strelka_Sotr" Grid.Row="0" Grid.Column="0"  Clicked="Strelka_Sotr_Clicked" FontSize="35" BackgroundColor="Purple" TextColor="White"></Button>
+                                        <Label  x:Name="Name_Sotr_In_Grid" Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand"  HorizontalTextAlignment="Center" FontSize="30" TextColor="White">Добавление</Label>
+                                    </Grid>
+                                    <Label  x:Name="Name_Sotr" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontSize="35"  TextColor="White">Сотрудники</Label>
+                                    <StackLayout Orientation="Horizontal" x:Name="Stac_Knopok_In_Sotr">
+                                        <ImageButton Source="poisk.png" HorizontalOptions="EndAndExpand" x:Name="Poisk_Sotr_Bt"  BackgroundColor="Purple" Clicked="Poisk_Sotr_Bt_Clicked"></ImageButton>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                            <ScrollView x:Name="Sotr_sckroll">
+                                <StackLayout>
+                                    <StackLayout x:Name="StackLayout_In_Scroll_Sotr"></StackLayout>
+                                    <StackLayout x:Name="New_Sotr_StackLayout" IsVisible="false">
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">ФИО</Label>
+                                                <Entry x:Name="FIO_sotr" HorizontalOptions="Start" FontSize="25"   VerticalTextAlignment="Start" HorizontalTextAlignment="Start" MaxLength="30" TextColor="Purple" PlaceholderColor="Gray" TextChanged="Name_Sotr_TextChanged" ></Entry>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">Должность</Label>
+                                                <Picker x:Name="Type_Sotr" SelectedIndexChanged="Type_Sotr_SelectedIndexChanged" TextColor="Purple">
+                                                    <Picker.Items>
+                                                        <x:String>Преподаватель</x:String>
+                                                        <x:String>Администратор</x:String>
+                                                        <x:String>Директор</x:String>
+                                                    </Picker.Items>
+                                                </Picker>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">Зарплата</Label>
+                                                <Entry x:Name="ZP_Sotr" HorizontalOptions="Start" FontSize="25"   VerticalTextAlignment="Start" HorizontalTextAlignment="Start" MaxLength="6" TextColor="Purple" PlaceholderColor="Gray" TextChanged="Name_Sotr_TextChanged" ></Entry>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">Дата рождения</Label>
+                                                <Entry x:Name="Data_Rozh" HorizontalOptions="Start" FontSize="25"   VerticalTextAlignment="Start" HorizontalTextAlignment="Start" MaxLength="10" TextColor="Purple" PlaceholderColor="Gray" TextChanged="Name_Sotr_TextChanged" ></Entry>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">Стаж</Label>
+                                                <Entry x:Name="Stazh" HorizontalOptions="Start" FontSize="25"   VerticalTextAlignment="Start" HorizontalTextAlignment="Start" MaxLength="2" TextColor="Purple" PlaceholderColor="Gray" TextChanged="Name_Sotr_TextChanged" ></Entry>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">Почта</Label>
+                                                <Entry x:Name="Pochta_Sotr" HorizontalOptions="Start" FontSize="25"   VerticalTextAlignment="Start" HorizontalTextAlignment="Start" MaxLength="30" TextColor="Purple" PlaceholderColor="Gray" TextChanged="Name_Sotr_TextChanged" ></Entry>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">Номер</Label>
+                                                <Entry x:Name="Phone_Number_Sotr" HorizontalOptions="Start" FontSize="25"   VerticalTextAlignment="Start" HorizontalTextAlignment="Start" MaxLength="11" TextColor="Purple" PlaceholderColor="Gray" TextChanged="Name_Sotr_TextChanged" ></Entry>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">Логин</Label>
+                                                <Entry x:Name="Login_Sotr" HorizontalOptions="Start" FontSize="25"   VerticalTextAlignment="Start" HorizontalTextAlignment="Start" MaxLength="6" TextColor="Purple" PlaceholderColor="Gray" TextChanged="Name_Sotr_TextChanged" ></Entry>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">Пароль</Label>
+                                                <Entry x:Name="Password_Sotr" HorizontalOptions="Start" FontSize="25"   VerticalTextAlignment="Start" HorizontalTextAlignment="Start" MaxLength="6" TextColor="Purple" PlaceholderColor="Gray" TextChanged="Name_Sotr_TextChanged" ></Entry>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">Псевдоним</Label>
+                                                <Entry x:Name="Psevldonim_Sotr" HorizontalOptions="Start" FontSize="25"   VerticalTextAlignment="Start" HorizontalTextAlignment="Start" MaxLength="20" TextColor="Purple" PlaceholderColor="Gray" TextChanged="Name_Sotr_TextChanged" ></Entry>
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ScrollView>
+                            <Button x:Name="Soxr_Inf_Ab_Sotr" Text="Сохранить" IsVisible="false" IsEnabled="False" BackgroundColor="Gray" CornerRadius="40"  TextColor="White" Clicked="Soxr_Inf_Ab_Sotr_Clicked"></Button>
+                            <Button x:Name="New_Sotr" Text="Добавить" BackgroundColor="Purple" CornerRadius="40"  TextColor="White" Clicked="New_Sotr_Clicked"></Button>
+                        </StackLayout>
+                        <Button x:Name="Del_Sotr" Text="Удалить сотрудника" BackgroundColor="Purple" CornerRadius="40" IsVisible="false"  TextColor="White" VerticalOptions="EndAndExpand" Clicked="Del_Sotr_Clicked"></Button>
+                    </StackLayout>
+                    
+                    <StackLayout x:Name="Third_page"  BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
+                        <StackLayout>
+                            <BoxView HorizontalOptions="StartAndExpand" BackgroundColor="Purple" x:Name="Minus_Ugli_Na_Third_Page"></BoxView>
+                            <Frame BackgroundColor="Purple" CornerRadius="40" x:Name="Box_View_On_Third_Page" Margin="0,-40,0,0">
+                                <StackLayout>
+                                    <Grid x:Name="Meropriatia_And_Strelka" IsVisible="false">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.2*"/>
+                                            <ColumnDefinition Width="0.6*" />
+                                            <ColumnDefinition Width="0.2*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button x:Name="Strelka_Meropriatia" Grid.Row="0" Grid.Column="0"  Clicked="Strelka_Meropriatia_Clicked" FontSize="35" BackgroundColor="Purple" TextColor="White"></Button>
+                                        <Label  x:Name="Name_Meropriatia_In_Grid" Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand"  HorizontalTextAlignment="Center" FontSize="30" TextColor="White"></Label>
+                                    </Grid>
+                                    <Label  x:Name="Name_Meropriatia" HorizontalOptions="CenterAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="35" TextColor="White">Мероприятия</Label>
+                                    <StackLayout Orientation="Horizontal" x:Name="Sl_Knopok_Mer">
+                                        <ImageButton Source="poisk.jpg" HorizontalOptions="StartAndExpand" x:Name="Poisk_Mer_Bt"  BackgroundColor="Purple" Clicked="Poisk_Mer_Bt_Clicked"></ImageButton>
+                                        <ImageButton  Source="plus.jpg" HorizontalOptions="EndAndExpand" x:Name="Dobav_Mer_Bt" BackgroundColor="Purple" Clicked="Dobav_Mer_Bt_Clicked"></ImageButton>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                            <ScrollView x:Name="Meroptiatie_sckroll">
+                                <StackLayout>
+                                    <StackLayout x:Name="StackLayout_In_Scroll_Meroptiatie_sckroll"></StackLayout>
+                                    <StackLayout x:Name="New_Dannye_in_Mer" IsVisible="false">
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="30"  TextColor="Purple">Название</Label>
+                                                <Entry x:Name="Name_Meropr" HorizontalOptions="Start"  FontSize="20"   VerticalTextAlignment="Start" HorizontalTextAlignment="Start"  TextChanged="Obsh_TextChanged" TextColor="Purple" PlaceholderColor="Gray" ></Entry>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="30"  TextColor="Purple">Место проведения</Label>
+                                                <Entry x:Name="Mesto_Meropr" HorizontalOptions="Start"  FontSize="20"   VerticalTextAlignment="Start" HorizontalTextAlignment="Start"  TextColor="Purple" PlaceholderColor="Gray" TextChanged="Obsh_TextChanged" ></Entry>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="30"  TextColor="Purple">Тип</Label>
+                                                <Entry x:Name="Type_Meropr" HorizontalOptions="Start" FontSize="20"   VerticalTextAlignment="Start" HorizontalTextAlignment="Start"  TextColor="Purple" PlaceholderColor="Gray" TextChanged="Obsh_TextChanged" ></Entry>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="30"  TextColor="Purple">Дата</Label>
+                                                <Entry x:Name="Date_Meropr" HorizontalOptions="Start" FontSize="20"   VerticalTextAlignment="Start" HorizontalTextAlignment="Start"  TextColor="Purple" PlaceholderColor="Gray" TextChanged="Obsh_TextChanged" ></Entry>
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+                                    <StackLayout x:Name="Poisk_Scroll" IsVisible="false" >
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">Название</Label>
+                                                <Entry x:Name="Name_Mer_Poisk" HorizontalOptions="Start" FontSize="25"   VerticalTextAlignment="Start" HorizontalTextAlignment="Start" MaxLength="20" TextColor="Purple" PlaceholderColor="Gray" TextChanged="Poisk_TextChanged" ></Entry>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">Минимальное число учасников</Label>
+                                                <Entry x:Name="Min_Chislo_Uchastnikov" Placeholder="0" HorizontalOptions="Start" FontSize="25"   VerticalTextAlignment="Start" HorizontalTextAlignment="Start" MaxLength="4" TextColor="Purple" PlaceholderColor="Gray" TextChanged="Poisk_TextChanged" ></Entry>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">Максимальное число учасников</Label>
+                                                <Entry x:Name="Max_Chislo_Uchastnikov" Placeholder="100" HorizontalOptions="Start" FontSize="25"   VerticalTextAlignment="Start" HorizontalTextAlignment="Start" MaxLength="4" TextColor="Purple" PlaceholderColor="Gray" TextChanged="Poisk_TextChanged" ></Entry>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">C</Label>
+                                                <DatePicker x:Name="Min_Date"   HorizontalOptions="Start" FontSize="25" DateSelected="Min_Date_DateSelected"   TextColor="Gray" ></DatePicker>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">До</Label>
+                                                <DatePicker x:Name="Max_Date"  HorizontalOptions="Start" TextColor="Gray" DateSelected="Min_Date_DateSelected"  FontSize="25"   ></DatePicker>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Button x:Name="Naity_mer_but" Text="Найти" VerticalOptions="EndAndExpand" BackgroundColor="Purple" CornerRadius="40"  TextColor="White" Clicked="Naity_mer_but_Clicked"></Button>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ScrollView>
+                            <Button x:Name="SoXr_Ism_New_Mer" IsEnabled="False" IsVisible="false" Text="Сохранить" CornerRadius="40"  TextColor="White" Clicked="SoXr_Ism_New_Mer_Clicked"></Button>
+                        </StackLayout>
+                    </StackLayout>
+                    
+                    <StackLayout x:Name="Fouth_page"  BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
+                        <BoxView HorizontalOptions="StartAndExpand" BackgroundColor="Purple" x:Name="Minus_Ugli_Na_Fouth_Page"></BoxView>
+                        <Frame BackgroundColor="Purple" CornerRadius="40" x:Name="Box_View_On_Fouth_Page" Margin="0,-40,0,0">
+                            <StackLayout Orientation="Horizontal">
+                                <Label  x:Name="Name_chats" HorizontalOptions="CenterAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="35" TextColor="White">Основной</Label>
+                            </StackLayout>
+                        </Frame>
+                        <ScrollView x:Name="Chats_sckroll">
+                            <StackLayout x:Name="StackLayout_In_Scroll_Groops_sckroll">
+
+                            </StackLayout>
+                        </ScrollView>
+                        <StackLayout Orientation="Horizontal" x:Name="Pole_Vvoda_And_Send" VerticalOptions="EndAndExpand">
+                            <Entry x:Name="Polle_Vvoda"></Entry>
+                            <ImageButton Source="send.png" BackgroundColor="White" x:Name="Send"  Clicked="Send_Clicked"></ImageButton>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout x:Name="Fifth_page"  BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
+                        <StackLayout>
+                            <BoxView HorizontalOptions="StartAndExpand" BackgroundColor="Purple" x:Name="Minus_Ugli_Na_Fifth_Page"></BoxView>
+                            <Frame BackgroundColor="Purple" CornerRadius="40" x:Name="Box_View_On_Fifth_Page" Margin="0,-40,0,0">
+                                <StackLayout>
+                                    <Grid x:Name="Rasspis_And_Strelka" IsVisible="false">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.2*"/>
+                                            <ColumnDefinition Width="0.6*" />
+                                            <ColumnDefinition Width="0.2*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button x:Name="Strelka_Rasspis" Grid.Row="0" Grid.Column="0"  Clicked="Strelka_Rasspis_Clicked" FontSize="35" BackgroundColor="Purple" TextColor="White"></Button>
+                                        <Label  x:Name="Name_Rasspis_In_Grid" Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand"  HorizontalTextAlignment="Center" FontSize="30" TextColor="White">Добавление</Label>
+                                    </Grid>
+                                    <Label  x:Name="Name_Rasspis" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontSize="35"  TextColor="White">Расписание</Label>
+                                </StackLayout>
+                            </Frame>
+                            <ScrollView x:Name="Rasspis_sckroll">
+                                <StackLayout>
+                                    <StackLayout x:Name="StackLayout_In_Scroll_Rasspis"></StackLayout>
+                                    <StackLayout Orientation="Vertical" x:Name="Three_Scrols_In_Rasspis" IsVisible="false" >
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                                <StackLayout Orientation="Vertical">
+                                                    <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">Группа </Label>
+                                                    <Picker x:Name="Group_Id_Piccker" SelectedIndexChanged="Obsh_Picker_Rasspis_SelectedIndexChanged"  TextColor="Purple">
+                                                    </Picker>
+                                                </StackLayout>
+                                            </Frame>
+                                            <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                                <StackLayout Orientation="Vertical">
+                                                    <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">Время</Label>
+                                                    <Picker x:Name="Vremy_Picker"  SelectedIndexChanged="Obsh_Picker_Rasspis_SelectedIndexChanged" TextColor="Purple">
+                                                    </Picker>
+                                                </StackLayout>
+                                            </Frame>
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">Дата</Label>
+                                                <Picker x:Name="Data_Picker" SelectedIndexChanged="Obsh_Picker_Rasspis_SelectedIndexChanged" TextColor="Purple">
+                                                </Picker>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Button x:Name="Save_Change_Rasspis" VerticalOptions="EndAndExpand" IsEnabled="False"  Text="Сохранить" BackgroundColor="Gray" CornerRadius="40"  TextColor="White" Clicked="Save_Change_Rasspis_Clicked"></Button>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ScrollView>
+                            <Button x:Name="New_Rasspis" Text="Добавить" BackgroundColor="Purple" CornerRadius="40"  TextColor="White" Clicked="New_Rasspis_Clicked"></Button>
+                        </StackLayout>
+                    </StackLayout>
+                    
+                    
+                    <StackLayout x:Name="Sixth_page"  BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
+                        <StackLayout>
+                            <BoxView HorizontalOptions="StartAndExpand" BackgroundColor="Purple" x:Name="Minus_Ugli_Na_Sixth_Page"></BoxView>
+                            <Frame BackgroundColor="Purple" CornerRadius="40" x:Name="Box_View_On_Sixth_Page" Margin="0,-40,0,0">
+                                <StackLayout>
+                                    <Grid x:Name="Usluga_And_Strelka" IsVisible="false">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.2*"/>
+                                            <ColumnDefinition Width="0.6*" />
+                                            <ColumnDefinition Width="0.2*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button x:Name="Strelka_Usluga" Grid.Row="0" Grid.Column="0"  Clicked="Strelka_Usluga_Clicked" FontSize="35" BackgroundColor="Purple" TextColor="White"></Button>
+                                        <Label x:Name="Name_Usluga_In_Grid" Grid.Row="0" Grid.Column="1" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontSize="35" HorizontalTextAlignment="Center"  TextColor="White">Услуги</Label>
+                                    </Grid>
+                                    <Label  x:Name="Name_Usluga" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontSize="35"  TextColor="White">Услуги</Label>
+                                </StackLayout>
+                            </Frame>
+                            <ScrollView x:Name="Usluga_Scroll" >
+                                <StackLayout>
+                                    <StackLayout x:Name="StackLayout_In_Scroll_Usluga"></StackLayout>
+                                    <StackLayout x:Name="Stacklayout_Dobav_Usluga" IsVisible="false">
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">Назваание услуги</Label>
+                                                <Entry x:Name="Name_Uslug_Dobav" HorizontalOptions="Start" FontSize="25"   VerticalTextAlignment="Start" HorizontalTextAlignment="Start" MaxLength="10" TextColor="Purple" PlaceholderColor="Gray" TextChanged="Name_Coast_Uslug_Dobav_TextChanged" ></Entry>
+                                            </StackLayout>
+                                        </Frame>
+                                        <Frame CornerRadius="40" BackgroundColor="White" BorderColor="Purple">
+                                                <StackLayout Orientation="Vertical">
+                                                <Label VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" FontSize="35"  TextColor="Purple">Цена</Label>
+                                                <Entry x:Name="Coast_Uslug_Dobav" HorizontalOptions="Start" FontSize="25"   VerticalTextAlignment="Start" HorizontalTextAlignment="Start" MaxLength="6" TextColor="Purple" PlaceholderColor="Gray" TextChanged="Name_Coast_Uslug_Dobav_TextChanged" ></Entry>
+                                                </StackLayout>
+                                         </Frame>
+                                        <Button x:Name="Soxran_New_Usluga" Text="Сохранить" VerticalOptions="EndAndExpand" BackgroundColor="Gray" CornerRadius="40"  TextColor="White" Clicked="Soxran_New_Usluga_Clicked"></Button>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ScrollView>
+                            <Button x:Name="Save_Change_Usluuga" IsEnabled="False" IsVisible="false" Text="Применить" VerticalOptions="EndAndExpand" BackgroundColor="Purple" CornerRadius="40"  TextColor="White" Clicked="Save_Change_Usluuga_Clicked"></Button>
+                            <Button x:Name="Add_New_Usluuga" Text="Добавить" VerticalOptions="EndAndExpand" BackgroundColor="Purple" CornerRadius="40"  TextColor="White" Clicked="Add_New_Usluga_Clicked"></Button>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <Grid  Grid.Column="0" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <ImageButton BackgroundColor="White" Source="client.png" Grid.Column="0" Grid.Row="0" Clicked="Button_One_Clicked"></ImageButton>
+                <ImageButton  Source="sotr.png" BackgroundColor="White" Grid.Column="1" Grid.Row="0" Clicked="Button_Two_Clicked"></ImageButton>
+                <ImageButton  Source="mer.png" BackgroundColor="White" Grid.Column="2" Grid.Row="0" Clicked="Button_Three_Clicked"></ImageButton>
+                <ImageButton Source="chat.png" BackgroundColor="White" Grid.Column="3" Grid.Row="0" Clicked="Button_Four_Clicked"></ImageButton>
+                <ImageButton Source="rasspis.png" BackgroundColor="White" Grid.Column="4" Grid.Row="0" Clicked="Button_Five_Clicked"></ImageButton>
+                <ImageButton Source="uslug.png" BackgroundColor="White" Grid.Column="5" Grid.Row="0" Clicked="Button_Six_Clicked"></ImageButton>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
