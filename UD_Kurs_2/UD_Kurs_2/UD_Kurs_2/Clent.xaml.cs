@@ -99,27 +99,6 @@ namespace UD_Kurs_2
             await DisplayAlert("", "", "Ок");
             
         }
-        //async void First_Rasspos()
-        //{
-        // //   Rasspis_Obs_String = await Task.Run(() => Work_Rasspis());
-        //    string Prom = "";
-        //    for (int i = 0; i < Rasspis_Obs_String.Length; i++)
-        //    {
-        //        if (Rasspis_Obs_String[i] != '#')
-        //        {
-        //            Prom += Rasspis_Obs_String[i];
-        //        }
-        //        else
-        //        {
-        //            Rsspis_String_List.Add(Prom);
-        //            Prom = "";
-        //        }
-        //    }
-        //    Rsspis_String_List.Add(Prom);
-        //    Prom = "";
-        //    First_Text_Appoaring();
-        //    Decoding_And_Criate_Choldren();
-        //}
         void First_Text_Appoaring(string Str)
         {
             Text_Hello_On_First_Page.Text = "Привет, ";
@@ -418,7 +397,6 @@ namespace UD_Kurs_2
         void Load_Chats(object sender, System.EventArgs e)
         {
             Button button = (Button)sender;
-
             try
             {
                 NetworkStream networkStream = tcpClient.GetStream();

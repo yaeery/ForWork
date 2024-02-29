@@ -38,13 +38,9 @@ namespace UD_Kurs_2
             {
                 try
                 {
-                    // IPEndPoint = new IPEndPoint(IPAddress.Parse("192.168.103.219"), 33023);
                     tcpClient = new TcpClient("192.168.68.219", 33023);
-                    //tcpClient = new TcpClient("192.168.1.3", 33023);
-                    //Thread1 = new Thread(Work);
-                    //   Thread1.Start();
                     NetworkStream networkStream = tcpClient.GetStream();
-                    byte[] bytes = Encoding.Unicode.GetBytes("LP#"+Login.Text + "#" + Password.Text);//("LP#AAAAAA#000000");//
+                    byte[] bytes = Encoding.Unicode.GetBytes("LP#"+Login.Text + "#" + Password.Text);
                     networkStream.Write(bytes, 0, bytes.Length);
                     networkStream.Flush();
                     while (true)
@@ -59,7 +55,6 @@ namespace UD_Kurs_2
                             {
                                 Console.WriteLine(Msg);
                                 Create_Page(Msg);
-                               // Thread1.Abort();
                                 break;
                             }
                             networkStream1.Flush();
@@ -69,8 +64,6 @@ namespace UD_Kurs_2
                 catch(Exception r)
                 {
                     string x = r.Message;
-                    //tcpClient.Close();
-                    // Thread1.Abort();
                     Massag.Text = "Нет подлючения попробуйте снова";
                 }
             }
@@ -83,91 +76,60 @@ namespace UD_Kurs_2
         }
         void Zapolnenie_All_Inf_Cl()
         {
-            All_Inf_About_User.Add("#" + Login.Text + "#" + Password.Text);//("#AAAAAA#000000");
-            All_Inf_About_User.Add(Work_Name());
-            All_Inf_About_User.Add(Work_Rasspis());
-            All_Inf_About_User.Add(Work_Pokupok());
-            All_Inf_About_User.Add(Work_Phone());
-            All_Inf_About_User.Add(Work_Pochta());
-            All_Inf_About_User.Add(Work_All_Meropriatie());
-            All_Inf_About_User.Add(Work_Meropriatye_By_User());
-            All_Inf_About_User.Add(Work_Groops());
+            All_Inf_About_User.Add("#" + Login.Text + "#" + Password.Text);
+            All_Inf_About_User.Add(Work("GN" + All_Inf_About_User[0]));
+            All_Inf_About_User.Add(Work("GT" + All_Inf_About_User[0]));
+            All_Inf_About_User.Add(Work("GP" + All_Inf_About_User[0]));
+            All_Inf_About_User.Add(Work("GF" + All_Inf_About_User[0]));
+            All_Inf_About_User.Add(Work("GE" + All_Inf_About_User[0]));
+            All_Inf_About_User.Add(Work("GM" + All_Inf_About_User[0]));
+            All_Inf_About_User.Add(Work("GU" + All_Inf_About_User[0]));
+            All_Inf_About_User.Add(Work("GG" + All_Inf_About_User[0]));
             All_Inf_About_User.Add(Login.Text);
             All_Inf_About_User.Add(Password.Text);
         }
         void Zapolnenie_All_Inf_Tc()
         {
-            All_Inf_About_User.Add("#" + Login.Text + "#" + Password.Text);//("#AAAAAA#000000");
-            All_Inf_About_User.Add(Work_Name());
-            All_Inf_About_User.Add(Work_Rasspis());
-            All_Inf_About_User.Add(Work_Phone());
-            All_Inf_About_User.Add(Work_Pochta());
+            All_Inf_About_User.Add("#" + Login.Text + "#" + Password.Text);
+            All_Inf_About_User.Add(Work("GN" + All_Inf_About_User[0]));
+            All_Inf_About_User.Add(Work("GT" + All_Inf_About_User[0]));
+            All_Inf_About_User.Add(Work("GF" + All_Inf_About_User[0]));
+            All_Inf_About_User.Add(Work("GE" + All_Inf_About_User[0]));
             All_Inf_About_User.Add(Login.Text);
             All_Inf_About_User.Add(Password.Text);
-            All_Inf_About_User.Add(Work_Groops());
-            All_Inf_About_User.Add(Work_All_Meropriatie());
-            All_Inf_About_User.Add(Work_FIO());
-            //All_Inf_About_User.Add(Work_Pokupok());
-            //All_Inf_About_User.Add(Work_Meropriatye_By_User());
-            //
+            All_Inf_About_User.Add(Work("GG" + All_Inf_About_User[0]));
+            All_Inf_About_User.Add(Work("GM" + All_Inf_About_User[0]));
+            All_Inf_About_User.Add(Work("GO" + All_Inf_About_User[0]));
         }
         void Zapolnenie_All_Inf_Di()
         {
-            All_Inf_About_User.Add("#" + Login.Text + "#" + Password.Text);//("#AAAAAA#000000");
-            All_Inf_About_User.Add(Work_All_Meropriatie());
-            All_Inf_About_User.Add(Work_Groops_Director());
-            All_Inf_About_User.Add(Work_All_People("C"));
-            All_Inf_About_User.Add(Work_All_People("T"));
-            All_Inf_About_User.Add(Work_All_Usluga());
-            All_Inf_About_User.Add(Work_Rasspis("B"));
-            All_Inf_About_User.Add(Load_Chats());
+            All_Inf_About_User.Add("#" + Login.Text + "#" + Password.Text);
+            All_Inf_About_User.Add(Work("GM" + All_Inf_About_User[0]));
+            All_Inf_About_User.Add(Work("DG"));
+            All_Inf_About_User.Add(Work("APC"));
+            All_Inf_About_User.Add(Work("APT"));
+            All_Inf_About_User.Add(Work("GZ"));
+            All_Inf_About_User.Add(Work("GTB"));
+            All_Inf_About_User.Add(Work("MMG0"));
         }
         void Zapolnenie_All_Inf_Admin()
         {
-            All_Inf_About_User.Add("#" + Login.Text + "#" + Password.Text);//("#AAAAAA#000000");
-            All_Inf_About_User.Add(Work_Name());
-            All_Inf_About_User.Add(Work_Phone());
-            All_Inf_About_User.Add(Work_Pochta());
+            All_Inf_About_User.Add("#" + Login.Text + "#" + Password.Text);
+            All_Inf_About_User.Add(Work("GN" + All_Inf_About_User[0]));
+            All_Inf_About_User.Add(Work("GF" + All_Inf_About_User[0]));
+            All_Inf_About_User.Add(Work("GE" + All_Inf_About_User[0]));
             All_Inf_About_User.Add(Login.Text);
             All_Inf_About_User.Add(Password.Text);
-            All_Inf_About_User.Add(Work_All_People("C"));
-            //All_Inf_About_User.Add(Work_Groops_Director());
-            All_Inf_About_User.Add(Work_All_Inf_Group());
-            All_Inf_About_User.Add(Work_All_People("A"));
-            All_Inf_About_User.Add(Work_All_Usluga());
-            All_Inf_About_User.Add(Work_All_Rasspis());
-            //All_Inf_About_User.Add(Load_Chats());
+            All_Inf_About_User.Add(Work("APC"));
+            All_Inf_About_User.Add(Work("AG"));
+            All_Inf_About_User.Add(Work("APA"));
+            All_Inf_About_User.Add(Work("GZ"));
+            All_Inf_About_User.Add(Work("AO"));
         }
-
-        string Load_Chats()
-        {
-                string Msg = "";
-                NetworkStream networkStream = tcpClient.GetStream();
-                byte[] bytes = Encoding.Unicode.GetBytes("MMG0");//(Login.Text + "#" + Password.Text);
-                networkStream.Write(bytes, 0, bytes.Length);
-                networkStream.Flush();
-                while (true)
-                {
-                    if (tcpClient.Available > 0)
-                    {
-                        Msg = "";
-                        byte[] bytes1 = new byte[32000];
-                        NetworkStream networkStream1 = tcpClient.GetStream();
-                        int size = networkStream1.Read(bytes1, 0, bytes1.Length);
-                        Msg += Encoding.Unicode.GetString(bytes1, 0, size);
-                        if (Msg[0] != '~')
-                        {
-                        networkStream1.Flush();
-                            return Msg;
-                        }
-                    networkStream1.Flush();
-                }
-            }
-        }
-        string Work_All_Rasspis ()
+        string Work(string Input)
         {
             NetworkStream networkStream = tcpClient.GetStream();
-            byte[] bytes = Encoding.Unicode.GetBytes("AO");//(Login.Text + "#" + Password.Text);
+            byte[] bytes = Encoding.Unicode.GetBytes(Input);
             networkStream.Write(bytes, 0, bytes.Length);
             networkStream.Flush();
             Msg = "";
@@ -177,344 +139,6 @@ namespace UD_Kurs_2
                 {
                     Msg = "";
                     byte[] bytes1 = new byte[8000];
-                    NetworkStream networkStream1 = tcpClient.GetStream();
-                    int size = networkStream1.Read(bytes1, 0, bytes1.Length);
-                    Msg += Encoding.Unicode.GetString(bytes1, 0, size);
-                    if (Msg[0] != '~')
-                    {
-                        return Msg;
-                    }
-                    networkStream1.Flush();
-                }
-            }
-        }
-        string Work_Rasspis()
-        {
-            NetworkStream networkStream = tcpClient.GetStream();
-            byte[] bytes = Encoding.Unicode.GetBytes("GT"+ All_Inf_About_User[0]);//(Login.Text + "#" + Password.Text);
-            networkStream.Write(bytes, 0, bytes.Length);
-            networkStream.Flush();
-            Msg = "";
-            while (true)
-            {
-                if (tcpClient.Available > 0)
-                {
-                    Msg = "";
-                    byte[] bytes1 = new byte[240000];
-                    NetworkStream networkStream1 = tcpClient.GetStream();
-                    int size = networkStream1.Read(bytes1, 0, bytes1.Length);
-                    Msg += Encoding.Unicode.GetString(bytes1, 0, size);
-                    if (Msg[0] != '~')
-                    {
-                        return Msg;
-                    }
-                    networkStream1.Flush();
-                }
-            }
-        }
-        string Work_Rasspis(string X)
-        {
-            NetworkStream networkStream = tcpClient.GetStream();
-            byte[] bytes = Encoding.Unicode.GetBytes("GT" + X);//(Login.Text + "#" + Password.Text);
-            networkStream.Write(bytes, 0, bytes.Length);
-            networkStream.Flush();
-            Msg = "";
-            while (true)
-            {
-                if (tcpClient.Available > 0)
-                {
-                    Msg = "";
-                    byte[] bytes1 = new byte[2048];
-                    NetworkStream networkStream1 = tcpClient.GetStream();
-                    int size = networkStream1.Read(bytes1, 0, bytes1.Length);
-                    Msg += Encoding.Unicode.GetString(bytes1, 0, size);
-                    if (Msg[0] != '~')
-                    {
-                        networkStream1.Flush();
-                        return Msg;
-                    }
-                    networkStream1.Flush();
-                }
-            }
-        }
-       
-        string Work_All_People(string Str)
-        {
-            NetworkStream networkStream = tcpClient.GetStream();
-            byte[] bytes = Encoding.Unicode.GetBytes("AP" + Str);//(Login.Text + "#" + Password.Text);
-            networkStream.Write(bytes, 0, bytes.Length);
-            networkStream.Flush();
-            Msg = "";
-            while (true)
-            {
-                if (tcpClient.Available > 0)
-                {
-                    Msg = "";
-                    byte[] bytes1 = new byte[64000];
-                    NetworkStream networkStream1 = tcpClient.GetStream();
-                    int size = networkStream1.Read(bytes1, 0, bytes1.Length);
-                    Msg += Encoding.Unicode.GetString(bytes1, 0, size);
-                    if (Msg[0] != '~')
-                    {
-                        return Msg;
-                    }
-                    networkStream1.Flush();
-                }
-            }
-        }
-        string Work_All_Inf_Group()
-        {
-            NetworkStream networkStream = tcpClient.GetStream();
-            byte[] bytes = Encoding.Unicode.GetBytes("AG");//(Login.Text + "#" + Password.Text);
-            networkStream.Write(bytes, 0, bytes.Length);
-            networkStream.Flush();
-            Msg = "";
-            while (true)
-            {
-                if (tcpClient.Available > 0)
-                {
-                    Msg = "";
-                    byte[] bytes1 = new byte[64000];
-                    NetworkStream networkStream1 = tcpClient.GetStream();
-                    int size = networkStream1.Read(bytes1, 0, bytes1.Length);
-                    Msg += Encoding.Unicode.GetString(bytes1, 0, size);
-                    if (Msg[0] != '~')
-                    {
-                        return Msg;
-                    }
-                    networkStream1.Flush();
-                }
-            }
-        }
-        string Work_All_Usluga()
-        {
-            NetworkStream networkStream = tcpClient.GetStream();
-            byte[] bytes = Encoding.Unicode.GetBytes("GZ");//(Login.Text + "#" + Password.Text);
-            networkStream.Write(bytes, 0, bytes.Length);
-            networkStream.Flush();
-            Msg = "";
-            while (true)
-            {
-                if (tcpClient.Available > 0)
-                {
-                    Msg = "";
-                    byte[] bytes1 = new byte[64000];
-                    NetworkStream networkStream1 = tcpClient.GetStream();
-                    int size = networkStream1.Read(bytes1, 0, bytes1.Length);
-                    Msg += Encoding.Unicode.GetString(bytes1, 0, size);
-                    if (Msg[0] != '~')
-                    {
-                        return Msg;
-                    }
-                    networkStream1.Flush();
-                }
-            }
-        }
-        string Work_Groops_Director()
-        {
-            NetworkStream networkStream = tcpClient.GetStream();
-            byte[] bytes = Encoding.Unicode.GetBytes("DG");//(Login.Text + "#" + Password.Text);
-            networkStream.Write(bytes, 0, bytes.Length);
-            networkStream.Flush();
-            Msg = "";
-            while (true)
-            {
-                if (tcpClient.Available > 0)
-                {
-                    Msg = "";
-                    byte[] bytes1 = new byte[64000];
-                    NetworkStream networkStream1 = tcpClient.GetStream();
-                    int size = networkStream1.Read(bytes1, 0, bytes1.Length);
-                    Msg += Encoding.Unicode.GetString(bytes1, 0, size);
-                    if (Msg[0] != '~')
-                    {
-                        return Msg;
-                    }
-                    networkStream1.Flush();
-                }
-            }
-        }
-        string Work_FIO()
-        {
-            NetworkStream networkStream = tcpClient.GetStream();
-            byte[] bytes = Encoding.Unicode.GetBytes("GO" + All_Inf_About_User[0]);//(Login.Text + "#" + Password.Text);
-            networkStream.Write(bytes, 0, bytes.Length);
-            networkStream.Flush();
-            Msg = "";
-            while (true)
-            {
-                if (tcpClient.Available > 0)
-                {
-                    Msg = "";
-                    byte[] bytes1 = new byte[64000];
-                    NetworkStream networkStream1 = tcpClient.GetStream();
-                    int size = networkStream1.Read(bytes1, 0, bytes1.Length);
-                    Msg += Encoding.Unicode.GetString(bytes1, 0, size);
-                    if (Msg[0] != '~')
-                    {
-                        return Msg;
-                    }
-                    networkStream1.Flush();
-                }
-            }
-        }
-        string Work_Phone()
-        {
-            NetworkStream networkStream = tcpClient.GetStream();
-            byte[] bytes = Encoding.Unicode.GetBytes("GF" + All_Inf_About_User[0]);//(Login.Text + "#" + Password.Text);
-            networkStream.Write(bytes, 0, bytes.Length);
-            networkStream.Flush();
-            Msg = "";
-            while (true)
-            {
-                if (tcpClient.Available > 0)
-                {
-                    Msg = "";
-                    byte[] bytes1 = new byte[64000];
-                    NetworkStream networkStream1 = tcpClient.GetStream();
-                    int size = networkStream1.Read(bytes1, 0, bytes1.Length);
-                    Msg += Encoding.Unicode.GetString(bytes1, 0, size);
-                    if (Msg[0] != '~')
-                    {
-                        return Msg;
-                    }
-                    networkStream1.Flush();
-                }
-            }
-        }
-        string Work_Pochta()
-        {
-            NetworkStream networkStream = tcpClient.GetStream();
-            byte[] bytes = Encoding.Unicode.GetBytes("GE" + All_Inf_About_User[0]);//(Login.Text + "#" + Password.Text);
-            networkStream.Write(bytes, 0, bytes.Length);
-            networkStream.Flush();
-            Msg = "";
-            while (true)
-            {
-                Msg = "";
-                if (tcpClient.Available > 0)
-                {
-                    byte[] bytes1 = new byte[64000];
-                    NetworkStream networkStream1 = tcpClient.GetStream();
-                    int size = networkStream1.Read(bytes1, 0, bytes1.Length);
-                    Msg += Encoding.Unicode.GetString(bytes1, 0, size);
-                    if (Msg[0] != '~')
-                    {
-                        return Msg;
-                    }
-                    networkStream1.Flush();
-                }
-            }
-        }
-        string Work_Meropriatye_By_User()
-        {
-            NetworkStream networkStream = tcpClient.GetStream();
-            byte[] bytes = Encoding.Unicode.GetBytes("GU" + All_Inf_About_User[0]);//(Login.Text + "#" + Password.Text);
-            networkStream.Write(bytes, 0, bytes.Length);
-            networkStream.Flush();
-            Msg = "";
-            while (true)
-            {
-                Msg = "";
-                if (tcpClient.Available > 0)
-                {
-                    byte[] bytes1 = new byte[64000];
-                    NetworkStream networkStream1 = tcpClient.GetStream();
-                    int size = networkStream1.Read(bytes1, 0, bytes1.Length);
-                    Msg += Encoding.Unicode.GetString(bytes1, 0, size);
-                    if (Msg[0] != '~')
-                    {
-                        return Msg;
-                    }
-                    networkStream1.Flush();
-                }
-            }
-        }
-        string Work_Name()
-        {
-            NetworkStream networkStream = tcpClient.GetStream();
-            byte[] bytes = Encoding.Unicode.GetBytes("GN" + All_Inf_About_User[0]);//(Login.Text + "#" + Password.Text);
-            networkStream.Write(bytes, 0, bytes.Length);
-            networkStream.Flush();
-            Msg = "";
-            while (true)
-            {
-                if (tcpClient.Available > 0)
-                {
-                    Msg = "";
-                    byte[] bytes1 = new byte[64000];
-                    NetworkStream networkStream1 = tcpClient.GetStream();
-                    int size = networkStream1.Read(bytes1, 0, bytes1.Length);
-                    Msg += Encoding.Unicode.GetString(bytes1, 0, size);
-                    if (Msg[0] != '~')
-                    {
-                        return Msg;
-                    }
-                    networkStream1.Flush();
-                }
-            }
-        }
-        string Work_Groops()
-        {
-            NetworkStream networkStream = tcpClient.GetStream();
-            byte[] bytes = Encoding.Unicode.GetBytes("GG" + All_Inf_About_User[0]);//(Login.Text + "#" + Password.Text);
-            networkStream.Write(bytes, 0, bytes.Length);
-            networkStream.Flush();
-            Msg = "";
-            while (true)
-            {
-                if (tcpClient.Available > 0)
-                {
-                    Msg = "";
-                    byte[] bytes1 = new byte[64000];
-                    NetworkStream networkStream1 = tcpClient.GetStream();
-                    int size = networkStream1.Read(bytes1, 0, bytes1.Length);
-                    Msg += Encoding.Unicode.GetString(bytes1, 0, size);
-                    if (Msg[0] != '~')
-                    {
-                        networkStream1.Flush();
-                        return Msg;
-                    }
-                }
-            }
-        }
-        string Work_All_Meropriatie()
-        {
-            NetworkStream networkStream = tcpClient.GetStream();
-            byte[] bytes = Encoding.Unicode.GetBytes("GM" + All_Inf_About_User[0]);//(Login.Text + "#" + Password.Text);
-            networkStream.Write(bytes, 0, bytes.Length);
-            networkStream.Flush();
-            Msg = "";
-            while (true)
-            {
-                if (tcpClient.Available > 0)
-                {
-                    Msg = "";
-                    byte[] bytes1 = new byte[8000];
-                    NetworkStream networkStream1 = tcpClient.GetStream();
-                    int size = networkStream1.Read(bytes1, 0, bytes1.Length);
-                    Msg += Encoding.Unicode.GetString(bytes1, 0, size);
-                    if (Msg[0] != '~')
-                    {
-                        return Msg;
-                    }
-                    networkStream1.Flush();
-                }
-            }
-        }
-        string Work_Pokupok()
-        {
-            NetworkStream networkStream = tcpClient.GetStream();
-            byte[] bytes = Encoding.Unicode.GetBytes("GP" + All_Inf_About_User[0]);//(Login.Text + "#" + Password.Text);
-            networkStream.Write(bytes, 0, bytes.Length);
-            networkStream.Flush();
-            Msg = "";
-            while (true)
-            {
-                Msg = "";
-                if (tcpClient.Available > 0)
-                {
-                    byte[] bytes1 = new byte[64000];
                     NetworkStream networkStream1 = tcpClient.GetStream();
                     int size = networkStream1.Read(bytes1, 0, bytes1.Length);
                     Msg += Encoding.Unicode.GetString(bytes1, 0, size);
@@ -528,7 +152,7 @@ namespace UD_Kurs_2
         }
         void Create_Page(string Type)
         {
-            switch(Type)
+            switch (Type)
             {
                 case "1":
                     Zapolnenie_All_Inf_Cl();
@@ -554,6 +178,5 @@ namespace UD_Kurs_2
                     break;
             }
         }
-
     }
 }
